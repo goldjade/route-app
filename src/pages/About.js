@@ -1,11 +1,11 @@
-import React from 'react'
+import React from "react";
 
-const About = () => {
+const About = (props) => {
   return (
     <div className="card card-body">
-     <h2>About</h2>
-      </div>
-  )
-}
+      <h2>About{props.title}</h2>
+    </div>
+  );
+};
 
-export default About
+export default About;
