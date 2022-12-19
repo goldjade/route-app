@@ -10,7 +10,13 @@ import SongList from "./pages/SongList";
 // import SongDetail from "./pages/SongDetail";
 import Player from "./pages/Player";
 import PlayerIndex from "./pages/PlayerIndex";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import NotFound from "./pages/NotFound";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 
 const App = () => {
   //멤버 목록 데이터
@@ -47,7 +53,8 @@ const App = () => {
           {/* <Route path="개발자가 설정한 url" />
           <Route path="/도메인만 입력" / 루트폴더 루트 디렉터리?> 
           <Route  element= 보여줄 도메인*/}
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Navigate to="/home" />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/about" element={<About title="인디밴드" />} />
           <Route path="/members" element={<Members members={members} />} />
           {/* <Route path="/songs/:id" element={<SongDetail songs={songs} />} /> */}
@@ -56,6 +63,8 @@ const App = () => {
             <Route index element={<PlayerIndex />} />
             <Route path=":id" element={<Player songs={songs} />} />
           </Route>
+          {/* *어떤것과도 조건이 맞지 않으면 */}
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
     </Router>
